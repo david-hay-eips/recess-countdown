@@ -14,11 +14,10 @@
   var year = dateNow.getFullYear();
   var month = dateNow.getMonth();
   var day = dateNow.getDate(); // because getDay returns day of the week
-  var startTime = new Date(year, month, day, 8, 38, 0);
-  var difference = startTime - dateNow;
-  if (difference < 0) {
-    difference = 0;
-  }
+
+  var startTime = new Date(year, month, day, 8, 38, 0); // set the start time here
+    var difference = startTime - dateNow;
+  if (difference < 0) {difference = 0;}
 
   // https://www.w3schools.com/howto/howto_js_countdown.asp
   var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
