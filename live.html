@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target='_top'>
+  </head>
+  <body>
+  <p id='countDownParagraph' style="text-align: center; font-size: 800%;"></p>
+  
+  <script>
+  var x = setInterval(function() {
+  var dateNow = new Date();
+  var year = dateNow.getFullYear();
+  var month = dateNow.getMonth();
+  var day = dateNow.getDate(); // because getDay returns day of the week
+  var startTime = new Date(year, month, day, 8, 38, 0);
+  var difference = startTime - dateNow;
+  if (difference < 0) {
+    difference = 0;
+  }
+
+  // https://www.w3schools.com/howto/howto_js_countdown.asp
+  var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((difference % (1000 * 60)) / 1000);
+  if (seconds < 10) {
+    seconds = "0" + seconds;
+  }
+  
+  if (hours > 0) {
+    var countDownString = hours + "h " + minutes + "m ";
+  } else {
+    var countDownString = minutes + ":" + seconds;
+  }
+    document.getElementById('countDownParagraph').innerHTML = countDownString;
+  }, 1000); // updating setInterval every second
+  </script>
+  </body>
+</html>
