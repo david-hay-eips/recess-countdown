@@ -47,19 +47,19 @@
 15, 10
 , 0);
   }
-  var untilString = '';
+  var untilString = 'recess.';
   var difference = firstRecessTime - dateNow;
-  if (difference < 0) {difference = lunchRecessTime - dateNow; untilString = 'recess'}
-  if (difference < 0) {difference = afterLunchTime - dateNow; untilString = 'class starts';}
-  if (difference < 0) {difference = lastRecessTime - dateNow; untilString = 'recess'}
-  if (difference < 0) {difference = endOfDay - dateNow; untilString = 'the end of the day'}
+  if (difference < 0) {difference = lunchRecessTime - dateNow;}
+  if (difference < 0) {difference = afterLunchTime - dateNow; untilString = 'class starts.';}
+  if (difference < 0) {difference = lastRecessTime - dateNow; untilString = 'recess.'}
+  if (difference < 0) {difference = endOfDay - dateNow; untilString = 'the end of the day.'}
   var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((difference % (1000 * 60)) / 1000);
   var displayDateTime = dateNow.toString().split(" GMT")[0];
-  if (hours > 0) {var countDownString = hours + " h and " + minutes + " m ";}
-  else {var countDownString = minutes + " m and " + seconds + " s ";}
-  document.getElementById('countDownParagraph').innerHTML = displayDateTime + "<br><br>" + countDownString  + 'until ' + untilString + '.';
+  if (hours > 0) {var countDownString = hours + "h " + minutes + "m ";// + seconds + "s ";
+  } else {var countDownString = minutes + "m " + seconds + "s ";}
+  document.getElementById('countDownParagraph').innerHTML = displayDateTime + "<br><br>It's " + countDownString  + 'until ' + untilString + '.';
   }, 1000); // updating setInterval every second
   </script>
   </body>

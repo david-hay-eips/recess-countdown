@@ -1,4 +1,17 @@
+group = '5L'
 
+firstRecessTime = '9, 58'
+lunchRecessTime = '12, 2'
+afterLunchTime = '12, 47'
+lastRecessTime = '13, 57'
+endOfDay = '15, 10'
+
+firstRecessTimeED = '9, 58'
+lunchRecessTimeED = '12, 2'
+afterLunchTimeED = '12, 2'
+endOfDayED = '15, 10'
+
+contents = '''
 <!DOCTYPE html>
 <html>
 <!DOCTYPE html>
@@ -16,35 +29,35 @@
   var day = dateNow.getDate();
   if (day < 8 && dateNow.getDay() == 3) { // first Wednesday of the month
     var firstRecessTime = new Date(year, month, day, 
-9, 58
+'''+ firstRecessTimeED +'''
 , 0);
     var lunchRecessTime = new Date(year, month, day, 
-12, 2
+'''+ lunchRecessTimeED +'''
 , 0);
     var afterLunchTime = new Date(year, month, day, 
-12, 2
+'''+ afterLunchTimeED +'''
 , 0);
     var lastRecessTime = new Date(year, month, day, 
-12, 2
+'''+ afterLunchTimeED +'''
 , 1);
     var endOfDay = new Date(year, month, day, 
-15, 10
+'''+ endOfDayED +'''
 , 0);
   } else {
     var firstRecessTime = new Date(year, month, day, 
-9, 58
+'''+ firstRecessTime +'''
 , 0);
     var lunchRecessTime = new Date(year, month, day, 
-12, 2
+'''+ lunchRecessTime +'''
 , 0);
     var afterLunchTime = new Date(year, month, day, 
-12, 47
+'''+ afterLunchTime +'''
 , 0);
     var lastRecessTime = new Date(year, month, day, 
-13, 57
+'''+ lastRecessTime +'''
 , 0);
     var endOfDay = new Date(year, month, day, 
-15, 10
+'''+ endOfDay +'''
 , 0);
   }
   var untilString = '';
@@ -64,3 +77,8 @@
   </script>
   </body>
 </html>
+'''
+
+f = open(group+'.html', 'w')
+f.write(contents)
+f.close()
