@@ -49,7 +49,7 @@
             }
             var untilString = 'recess';
             var difference = firstRecessTime - dateNow;
-            if (difference < 0) {difference = lunchRecessTime - dateNow; untilString = 'recess'}
+            if (difference < 0) {difference = lunchRecessTime - dateNow; untilString = 'lunch'}
             if (difference < 0) {difference = afterLunchTime - dateNow; untilString = 'class starts';}
             if (difference < 0) {difference = lastRecessTime - dateNow; untilString = 'recess'}
             if (difference < 0) {difference = endOfDay - dateNow; untilString = 'the end of the day'}
