@@ -28,7 +28,7 @@
             12, 43
             , 1);
                 var endOfDay = new Date(year, month, day, 
-            2, 02
+            14, 02
             , 0);
             } else {
                 var firstRecessTime = new Date(year, month, day, 
@@ -41,15 +41,17 @@
             12, 49
             , 0);
                 var lastRecessTime = new Date(year, month, day, 
-            1, 36
+            13, 36
             , 0);
                 var endOfDay = new Date(year, month, day, 
-            3, 10
+            15, 10
             , 0);
             }
             var untilString = 'recess';
             var difference = firstRecessTime - dateNow;
-            if (difference < 0) {difference = lunchRecessTime - dateNow; untilString = 'lunch'}
+            if (difference < 0) {difference = lunchRecessTime - dateNow; untilString = 
+            'lunch'
+            }
             if (difference < 0) {difference = afterLunchTime - dateNow; untilString = 'class starts';}
             if (difference < 0) {difference = lastRecessTime - dateNow; untilString = 'recess'}
             if (difference < 0) {difference = endOfDay - dateNow; untilString = 'the end of the day'}

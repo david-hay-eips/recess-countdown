@@ -6,9 +6,9 @@ with open('bell-times.csv') as csv_file:
         if line_count > 0:
             group = row[0]
             if group[1] == 'R':
-                lunchOrRecess = 'lunch'
+                lunchOrRecess = "'lunch'"
             else:
-                lunchOrRecess = 'recess'
+                lunchOrRecess = "'recess'"
             firstRecessTime = row[1].replace(':',', ')
             lunchRecessTime = row[2].replace(':',', ')
             afterLunchTime = row[3].replace(':',', ')
@@ -71,9 +71,9 @@ with open('bell-times.csv') as csv_file:
             }
             var untilString = 'recess';
             var difference = firstRecessTime - dateNow;
-            if (difference < 0) {difference = lunchRecessTime - dateNow; untilString = '
+            if (difference < 0) {difference = lunchRecessTime - dateNow; untilString = 
             '''+lunchOrRecess+'''
-            '}
+            }
             if (difference < 0) {difference = afterLunchTime - dateNow; untilString = 'class starts';}
             if (difference < 0) {difference = lastRecessTime - dateNow; untilString = 'recess'}
             if (difference < 0) {difference = endOfDay - dateNow; untilString = 'the end of the day'}
