@@ -1,4 +1,22 @@
+import csv
+with open('bell-times.csv') as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=',')
+    line_count = 0
+    for row in csv_reader:
+        if line_count > 0:
+            group = row[0]
+            firstRecessTime = row[1].replace(':',', ')
+            lunchRecessTime = row[2].replace(':',', ')
+            afterLunchTime = row[3].replace(':',', ')
+            lastRecessTime = row[4].replace(':',', ')
+            endOfDay = row[5].replace(':',', ')
 
+            firstRecessTimeED = row[6].replace(':',', ')
+            lunchRecessTimeED = row[7].replace(':',', ')
+            afterLunchTimeED = row[8].replace(':',', ')
+            endOfDayED = row[9].replace(':',', ')
+            #print(endOfDayED)
+            contents = '''
             <!DOCTYPE html>
             <html>
             <!DOCTYPE html>
@@ -16,35 +34,35 @@
             var day = dateNow.getDate();
             if (day < 8 && dateNow.getDay() == 3) { // first Wednesday of the month
                 var firstRecessTime = new Date(year, month, day, 
-            9, 52
+            '''+ firstRecessTimeED +'''
             , 0);
                 var lunchRecessTime = new Date(year, month, day, 
-            11, 51
+            '''+ lunchRecessTimeED +'''
             , 0);
                 var afterLunchTime = new Date(year, month, day, 
-            12, 42
+            '''+ afterLunchTimeED +'''
             , 0);
                 var lastRecessTime = new Date(year, month, day, 
-            12, 42
+            '''+ afterLunchTimeED +'''
             , 1);
                 var endOfDay = new Date(year, month, day, 
-            2, 02
+            '''+ endOfDayED +'''
             , 0);
             } else {
                 var firstRecessTime = new Date(year, month, day, 
-            9, 58
+            '''+ firstRecessTime +'''
             , 0);
                 var lunchRecessTime = new Date(year, month, day, 
-            12, 02
+            '''+ lunchRecessTime +'''
             , 0);
                 var afterLunchTime = new Date(year, month, day, 
-            12, 47
+            '''+ afterLunchTime +'''
             , 0);
                 var lastRecessTime = new Date(year, month, day, 
-            2, 12
+            '''+ lastRecessTime +'''
             , 0);
                 var endOfDay = new Date(year, month, day, 
-            3, 10
+            '''+ endOfDay +'''
             , 0);
             }
             var untilString = 'recess';
@@ -64,4 +82,9 @@
             </script>
             </body>
             </html>
-            
+            '''
+
+            f = open(group+'.html', 'w')
+            f.write(contents)
+            f.close()
+        line_count += 1
