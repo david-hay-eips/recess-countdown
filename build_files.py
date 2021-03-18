@@ -84,7 +84,7 @@ with open('bell-times.csv') as csv_file:
             document.getElementById('countDownParagraph').innerHTML = displayDateTime + "<br><br>" + countDownString  + 'until ' + untilString + '.';
             }, 1000); // updating setInterval every second
             </script>
-            <center><img src="https://www.theweather.com/wimages/fotof5d32fad7897654a56bd190b47d30b33.png"></center>
+            <center><img src="https://www.theweather.com/wimages/fotof5d32fad7897654a56bd190b47d30b33.png" width="75%"></center>
             </body>
             </html>
             '''
