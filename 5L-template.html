@@ -1,64 +1,70 @@
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <base target='_top'>
-  </head>
-  <body>
-  <p id='countDownParagraph' style="text-align: center; font-size: 700%;"></p>
-  
-  <script>
-  var x = setInterval(function() {
-  
-  var dateNow = new Date();
-  var year = dateNow.getFullYear();
-  var month = dateNow.getMonth();
-  var day = dateNow.getDate(); // because getDay returns day of the week
-  if (day < 8 && dateNow.getDay() == 3) { // if it is  first Wednesday of month
-    var firstRecessTime = new Date(year, month, day, 9, 52, 0); // 9:52
-    var lunchRecessTime = new Date(year, month, day, 11, 51, 0);
-    var afterLunchTime = new Date(year, month, day, 12, 42, 0);
-    var lastRecessTime = new Date(year, month, day, 12, 42, 1); // no last recess
-    var endOfDay = new Date(year, month, day, 14, 02, 30);
-  } else {
-    var firstRecessTime = new Date(year, month, day, 9, 58, 0); // 9:58
-    var lunchRecessTime = new Date(year, month, day, 12, 2, 0);
-    var afterLunchTime = new Date(year, month, day, 12, 47, 0);
-    var lastRecessTime = new Date(year, month, day, 13, 57, 0);
-    var endOfDay = new Date(year, month, day, 15, 10);
-  }
-  var untilString = 'recess';
-  var difference = firstRecessTime - dateNow;
-  if (difference < 0) { // if it's after first recess
-    difference = lunchRecessTime - dateNow;
-  }
-  if (difference < 0) { // if it's after lunch recess starts
-    difference = afterLunchTime - dateNow;
-    untilString = 'class starts';
-  }
-  if (difference < 0) { // if it's after lunch ends
-    difference = lastRecessTime - dateNow;
-    untilString = 'recess'
-  }
-  if (difference < 0) { // counting down to the end of the day
-    difference = endOfDay - dateNow;
-    untilString = 'the end of the day'
-  }
-  // https://www.w3schools.com/howto/howto_js_countdown.asp
-  var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((difference % (1000 * 60)) / 1000);
-  var displayDateTime = dateNow.toString().split(" GMT")[0];
-  if (hours > 0) {
-  var countDownString = hours + "h " + minutes + "m ";// + seconds + "s ";
-  } else {
-  var countDownString = minutes + "m " + seconds + "s ";
-  }
-  document.getElementById('countDownParagraph').innerHTML = displayDateTime + "<br><br>It's " + countDownString  + 'until ' + untilString + '.';
-  }, 1000); // updating setInterval every second
-  </script>
-<a class="weatherwidget-io" href="https://forecast7.com/en/53d54n113d30/sherwood-park/" data-label_1="Sherwood Park" data-label_2="Weather" data-days="3" data-theme="pure" >Sherwood Park Weather</a>
+<meta name=”apple-mobile-web-app-capable” content=”yes”>
+<head>
+<base target='_top'>
+</head>
+<body>
+<p id='countDownParagraph' style="text-align: center; font-size: 700%;"></p>
 <script>
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+var x = setInterval(function() {
+var dateNow = new Date();
+var year = dateNow.getFullYear();
+var month = dateNow.getMonth();
+var day = dateNow.getDate();
+if (day < 8 && dateNow.getDay() == 3) { // first Wednesday of the month
+    var firstRecessTime = new Date(year, month, day, 
+9, 52
+, 0);
+    var lunchRecessTime = new Date(year, month, day, 
+11, 51
+, 0);
+    var afterLunchTime = new Date(year, month, day, 
+12, 42
+, 0);
+    var lastRecessTime = new Date(year, month, day, 
+12, 42
+, 1);
+    var endOfDay = new Date(year, month, day, 
+14, 02
+, 0);
+} else {
+    var firstRecessTime = new Date(year, month, day, 
+9, 58
+, 0);
+    var lunchRecessTime = new Date(year, month, day, 
+12, 02
+, 0);
+    var afterLunchTime = new Date(year, month, day, 
+12, 47
+, 0);
+    var lastRecessTime = new Date(year, month, day, 
+13, 57
+, 0);
+    var endOfDay = new Date(year, month, day, 
+15, 10
+, 0);
+}
+var untilString = 'recess';
+var difference = firstRecessTime - dateNow;
+if (difference < 0) {difference = lunchRecessTime - dateNow; untilString = 'recess';}
+if (difference < 0) {difference = afterLunchTime - dateNow; untilString = 'class starts';}
+if (difference < 0) {difference = lastRecessTime - dateNow; untilString = 'recess';}
+if (difference < 0) {difference = endOfDay - dateNow; untilString = 'the end of the day';}
+var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+var seconds = Math.floor((difference % (1000 * 60)) / 1000);
+var displayDateTime = dateNow.toString().split(" GMT")[0];
+if (hours == 5 & minutes == 30 & seconds == 30) {location.reload(true);} // check each morning for an update
+if (hours == 0 & minutes < 3) {document.getElementById('countDownParagraph').style.color='red';}
+if (hours < 0) {document.getElementById('countDownParagraph').style.color='silver';}
+else {document.getElementById('countDownParagraph').style.color='black';}
+if (hours > 0) {var countDownString = hours + " h and " + minutes + " m ";}
+else {var countDownString = minutes + " m and " + seconds + " s ";}
+document.getElementById('countDownParagraph').innerHTML = displayDateTime + "<br><br>" + countDownString  + 'until ' + untilString + '.';
+}, 1000); // updating setInterval every second
 </script>
-  </body>
+
+</body>
 </html>

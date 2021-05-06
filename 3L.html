@@ -57,14 +57,16 @@
             var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((difference % (1000 * 60)) / 1000);
             var displayDateTime = dateNow.toString().split(" GMT")[0];
+            // check each morning for an update
+            if (hours == 5 & minutes == 30 & seconds == 30) {location.reload(true);}
+            // set text color to red if < 3 minutes
+            if (hours == 0 & minutes < 3) {document.getElementById('countDownParagraph').style.color='red';}
+            if (hours < 0) {document.getElementById('countDownParagraph').style.color='silver';}
+            else {document.getElementById('countDownParagraph').style.color='black';}
             if (hours > 0) {var countDownString = hours + " h and " + minutes + " m ";}
             else {var countDownString = minutes + " m and " + seconds + " s ";}
             document.getElementById('countDownParagraph').innerHTML = displayDateTime + "<br><br>" + countDownString  + 'until ' + untilString + '.';
             }, 1000); // updating setInterval every second
-            </script>
-            <a class="weatherwidget-io" href="https://forecast7.com/en/53d54n113d30/sherwood-park/" data-label_1="Sherwood Park" data-label_2="Weather" data-days="3" data-theme="pure" >Sherwood Park Weather</a>
-            <script>
-            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
             </script>
             </body>
             </html>
