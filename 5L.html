@@ -1,9 +1,8 @@
 
             <!DOCTYPE html>
             <html>
-            <meta name=”apple-mobile-web-app-capable” content=”yes”>
             <head>
-            <base target='_top'>
+                <base target='_top'>
             </head>
             <body>
             <p id='countDownParagraph' style="text-align: center; font-size: 700%;"></p>
@@ -48,15 +47,19 @@
             }
             var untilString = 'recess';
             var difference = firstRecessTime - dateNow;
-            if (difference < 0) {difference = lunchRecessTime - dateNow; untilString = 'recess';}
+            if (difference < 0) {difference = lunchRecessTime - dateNow; untilString = 
+            'recess'
+            }
             if (difference < 0) {difference = afterLunchTime - dateNow; untilString = 'class starts';}
-            if (difference < 0) {difference = lastRecessTime - dateNow; untilString = 'recess';}
-            if (difference < 0) {difference = endOfDay - dateNow; untilString = 'the end of the day';}
+            if (difference < 0) {difference = lastRecessTime - dateNow; untilString = 'recess'}
+            if (difference < 0) {difference = endOfDay - dateNow; untilString = 'the end of the day'}
             var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((difference % (1000 * 60)) / 1000);
             var displayDateTime = dateNow.toString().split(" GMT")[0];
-            if (hours == 5 & minutes == 30 & seconds == 30) {location.reload(true);} // check each morning for an update
+            // check each morning for an update
+            if (hours == 5 & minutes == 30 & seconds == 30) {location.reload(true);}
+            // set text color to red if < 3 minutes
             if (hours == 0 & minutes < 3) {document.getElementById('countDownParagraph').style.color='red';}
             if (hours < 0) {document.getElementById('countDownParagraph').style.color='silver';}
             else {document.getElementById('countDownParagraph').style.color='black';}
@@ -65,7 +68,6 @@
             document.getElementById('countDownParagraph').innerHTML = displayDateTime + "<br><br>" + countDownString  + 'until ' + untilString + '.';
             }, 1000); // updating setInterval every second
             </script>
-
             </body>
             </html>
             
