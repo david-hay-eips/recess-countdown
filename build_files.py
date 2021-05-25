@@ -27,7 +27,7 @@ with open('bell-times.csv') as csv_file:
                 <base target='_top'>
             </head>
             <body>
-            <p id='countDownParagraph' style="text-align: center; font-size: 700%;"></p>
+            <div id='countDownParagraph' style="text-align: center; font-size: 700%;"></div>
             <script>
             var x = setInterval(function() {
             var dateNow = new Date();
