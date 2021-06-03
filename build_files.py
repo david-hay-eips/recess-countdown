@@ -80,9 +80,9 @@ with open('bell-times.csv') as csv_file:
             var seconds = Math.floor((difference % (1000 * 60)) / 1000);
             var displayDateTime = dateNow.toString().split(" GMT")[0];
             // check each morning for an update
-            if (hours == 5 & minutes == 30 & seconds == 30) {location.reload(true);}
+            if (hours == 5 && minutes == 30 && seconds == 30) {location.reload(true);}
             // set text color to red if < 3 minutes
-            if (hours == 0 & minutes < 3) {document.getElementById('countDownParagraph').style.color='red';}
+            if (hours == 0 && minutes < 3) {document.getElementById('countDownParagraph').style.color='red';}
             if (hours < 0) {document.getElementById('countDownParagraph').style.color='grey';document.body.style.backgroundColor='black';}
             else {document.getElementById('countDownParagraph').style.color='black';}
             if (hours > 0) {var countDownString = hours + " h and " + minutes + " m ";}
