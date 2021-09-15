@@ -14,23 +14,23 @@
             var day = dateNow.getDate();
             if (day < 8 && dateNow.getDay() == 3) { // first Wednesday of the month
                 var firstRecessTime = new Date(year, month, day, 
-            10, 18
+            10, 14
             , 0);
                 var lunchRecessTime = new Date(year, month, day, 
-            11, 55
+            11, 36
             , 0);
                 var afterLunchTime = new Date(year, month, day, 
-            12, 45
+            12, 33
             , 0);
                 var lastRecessTime = new Date(year, month, day, 
-            12, 45
+            12, 33
             , 1);
                 var endOfDay = new Date(year, month, day, 
-            14, 00
+            14, 14
             , 0);
             } else {
                 var firstRecessTime = new Date(year, month, day, 
-            10, 17
+            10, 13
             , 0);
                 var lunchRecessTime = new Date(year, month, day, 
             12, 06
@@ -39,10 +39,10 @@
             12, 51
             , 0);
                 var lastRecessTime = new Date(year, month, day, 
-            13, 38
+            13, 53
             , 0);
                 var endOfDay = new Date(year, month, day, 
-            15, 08
+            15, 12
             , 0);
             }
             var untilString = 'recess';
