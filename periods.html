@@ -20,7 +20,8 @@ if (day < 8 && dateNow.getDay() == 3) { // first Wednesday of the month
     var five = new Date(year, month, day, 11, 2, 0);
     var six = new Date(year, month, day, 11, 28, 0);
     var seven = new Date(year, month, day, 11, 54, 0);
-    var lunch = new Date(year, month, day, 12, 24, 0);
+    var lunch1 = new Date(year, month, day, 12, 24, 0);
+    var lunch2 = new Date(year, month, day, 12, 54, 0);
     var eight = new Date(year, month, day, 13, 20, 0);
     var nine = new Date(year, month, day, 13, 46, 0);
     var ten = new Date(year, month, day, 14, 12, 0);
@@ -31,7 +32,8 @@ if (day < 8 && dateNow.getDay() == 3) { // first Wednesday of the month
     var four = new Date(year, month, day, 11, 02, 0);
     var five = new Date(year, month, day, 11, 34, 0);
     var six = new Date(year, month, day, 12, 6, 0);
-    var lunch = new Date(year, month, day, 12, 28, 0);
+    var lunch1 = new Date(year, month, day, 12, 28, 0);
+    var lunch2 = new Date(year, month, day, 12, 51, 0);
     var seven = new Date(year, month, day, 13, 23, 0);
     var eight = new Date(year, month, day, 13, 53, 0);
     var nine = new Date(year, month, day, 14, 40, 0);
@@ -39,33 +41,31 @@ if (day < 8 && dateNow.getDay() == 3) { // first Wednesday of the month
 }
 
 var difference = one - dateNow;
-var period = 1;
-if (difference < 0) {difference = two - dateNow; period = 2;}
-if (difference < 0) {difference = three - dateNow; period = 3;}
-if (difference < 0) {difference = four - dateNow; period = 4;}
-if (difference < 0) {difference = five - dateNow; period = 5;}
-if (difference < 0) {difference = six - dateNow; period = 6;}
-if (difference < 0) {difference = lunch - dateNow; period = "lunch";}
-if (difference < 0) {difference = seven - dateNow; period = 7;}
-if (difference < 0) {difference = eight - dateNow; period = 8;}
-if (difference < 0) {difference = nine - dateNow; period = 9;}
-if (difference < 0) {difference = ten - dateNow; period = 10;}
+var period = "Period 1";
+if (difference < 0) {difference = two - dateNow; period = "Period 2";}
+if (difference < 0) {difference = three - dateNow; period = "Period 3";}
+if (difference < 0) {difference = four - dateNow; period = "Period 4";}
+if (difference < 0) {difference = five - dateNow; period = "Period 5";}
+if (difference < 0) {difference = six - dateNow; period = "Period 6";}
+if (difference < 0) {difference = lunch1 - dateNow; period = "Lunch / Recess";}
+if (difference < 0) {difference = lunch2 - dateNow; period = "Lunch / Recess";}
+if (difference < 0) {difference = seven - dateNow; period = "Period 7";}
+if (difference < 0) {difference = eight - dateNow; period = "Period 8";}
+if (difference < 0) {difference = nine - dateNow; period = "Period 9";}
+if (difference < 0) {difference = ten - dateNow; period = "Period 10";}
 
 var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
 var seconds = Math.floor((difference % (1000 * 60)) / 1000);
 if (seconds < 10) {seconds = "0" + seconds;}
 var displayDateTime = dateNow.toString().split(" GMT")[0];
-// reload each morning for an update
-if (hours == 5 && minutes == 30 && seconds == 30) {location.reload(true);}
-
+if (hours == 5 && minutes == 30 && seconds == 30) {location.reload(true);} // reload each morning for an update
 if (hours < 0) {document.getElementById('countDownParagraph').style.color='grey';document.body.style.backgroundColor='black';}
 else {document.getElementById('countDownParagraph').style.color='black';}
 if (hours > 0) {var countDownString = hours + " h and " + minutes + " m ";}
 else {var countDownString = minutes + ":" + seconds;}
-// set text color to red if < 2 minutes
-if (hours == 0 && minutes < 2) {document.getElementById('countDownParagraph').style.color='red';}
-document.getElementById('countDownParagraph').innerHTML = displayDateTime + "<div style='color:blue'>Period "+ period + "</div>" + countDownString;
+if (hours == 0 && minutes < 2) {document.getElementById('countDownParagraph').style.color='red';} // set text color to red if < 2 minutes
+document.getElementById('countDownParagraph').innerHTML = displayDateTime + "<div style='color:blue'>"+ period + "</div>" + countDownString;
 }, 1000); // updating setInterval every 1000 milliseconds
 </script>
 </body>
