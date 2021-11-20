@@ -5,33 +5,33 @@
 <base target='_top'>
 </head>
 <body>
-<div id='countDownParagraph' style="text-align: center; font-size: 700%;"></div>
+<div id='date' style="text-align: center; font-size: 700%;"></div>
+<div id='time' style="text-align: center; font-size: 700%;"></div>
+<div id='period' style="text-align: center; font-size: 700%;"></div>
+<div id='periodCountdown' style="text-align: center; font-size: 700%;"></div>
+<div id='breakCountdown' style="text-align: center; font-size: 700%;"></div>
+
 <script>
 var x = setInterval(function() {
 var dateNow = new Date();
 var year = dateNow.getFullYear();
-var month = dateNow.getMonth();
+var month = dateNow.getMonth()+1; // since months are zero-indexed
 var day = dateNow.getDate();
+var weekdayNumber = dateNow.getDay();
+const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+var weekday = weekdays[weekdayNumber];
 var hour = dateNow.getHours();
 if (hour > 12) {hour = hour - 12;}
 var minute = dateNow.getMinutes();
 if (minute < 10) {minute = "0" + minute;}
-//var second = dateNow.getSeconds();
-//if (second < 10) {second = "0" + second;}
 var ampm = dateNow.getHours() >= 12 ? 'PM' : 'AM';
+document.getElementById('date').innerHTML = weekday+" "+year+"-"+month+"-"+day;
+document.getElementById('time').innerHTML = hour+":"+minute+" "+ampm;
 
-//var displayDateTime = dateNow.toString().split(" GMT")[0];
-//var displayDateTime = year+"-"+month+"-"+day+"<br>"+hour+":"+minute+":"+second+" "+ampm;
-var displayDateTime = year+"-"+month+"-"+day+"<br>"+hour+":"+minute+" "+ampm;
 
-/*
 if (dateNow.getDay() == 0 || dateNow.getDay() == 6) { // Sunday or Saturday
-    document.body.style.backgroundColor='black';
-    document.getElementById('countDownParagraph').style.color='grey';
-    document.getElementById('countDownParagraph').innerHTML = "";
-    
-}
-else { //*/
+    document.body.style.backgroundColor='grey';
+} else {
 if (day < 8 && dateNow.getDay() == 3) { // first Wednesday of the month
     var zero = new Date(year, month, day, 8, 37, 0);
     var one = new Date(year, month, day, 9, 3, 0);
@@ -90,26 +90,30 @@ else {var countDownString = minutes + ":" + seconds;}
 if (hours == 0 && minutes < 2) {document.getElementById('countDownParagraph').style.color='red';} // set text color to red if < 2 minutes
 
 if (day < 8 && dateNow.getDay() == 3) { // first Wednesday of the month
-    var ur = three - dateNow;
-    if (ur < 0) {ur = seven - dateNow;}
-    if (ur < 0) {ur = ten - dateNow;}
+    var untilBreak = three - dateNow;
+    if (untilBreak < 0) {untilBreak = seven - dateNow;}
+    if (untilBreak < 0) {untilBreak = ten - dateNow;}
 }
 else {
-    var ur = three - dateNow;
-    if (ur < 0) {ur = six - dateNow;}
-    if (ur < 0) {ur = eight - dateNow;}
-    if (ur < 0) {ur = ten - dateNow;}
+    var untilBreak = three - dateNow;
+    if (untilBreak < 0) {untilBreak = six - dateNow;}
+    if (untilBreak < 0) {untilBreak = eight - dateNow;}
+    if (untilBreak < 0) {untilBreak = ten - dateNow;}
 }
-var hur = Math.floor((ur % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-var mur = Math.floor((ur % (1000 * 60 * 60)) / (1000 * 60));
-var sur = Math.floor((ur % (1000 * 60)) / 1000);
-if (hur > 0) {var untilRecess = hur + " h and " + mur + " m until break";}
-else if (mur > 30) {var untilRecess = mur + ":" + sur + " until break";}
-else {var untilRecess = "";}
+var hoursUntilBreak = Math.floor((untilBreak % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutesUntilBreak = Math.floor((untilBreak % (1000 * 60 * 60)) / (1000 * 60));
+if (minutesUntilBreak < 10) {minutesUntilBreak = "0" + minutesUntilBreak;}
+var secondsUntilBreak = Math.floor((untilBreak % (1000 * 60)) / 1000);
+if (secondsUntilBreak < 10) {secondsUntilBreak = "0" + secondsUntilBreak;}
 
-document.getElementById('countDownParagraph').innerHTML = displayDateTime + "<div style='color:blue'>"+ period + "</div>" + countDownString + "<div style='color:yellow'>" + untilRecess + "</div>";
+if (hoursUntilBreak > 0) {document.getElementById('breakCountdown').innerHTML = hoursUntilBreak + " h and " + minutesUntilBreak + " m until break";}
+else if (minutesUntilBreak > 30) {document.getElementById('breakCountdown').innerHTML = minutesUntilBreak + ":" + secondsUntilBreak + " until break";}
+else {document.getElementById('breakCountdown').innerHTML = "";}
 
-//} // closing the Saturday Sunday check
+//document.getElementById('countDownParagraph').innerHTML = "<div style='color:blue'>"+ period + "</div>" + countDownString + "<div style='color:yellow'>" + untilRecess + "</div>";
+document.getElementById('period').innterHTML = period;
+
+} // closing the Saturday Sunday check
 }, 1000); // updating setInterval every 1000 milliseconds
 </script>
 </body>
