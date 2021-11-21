@@ -93,7 +93,7 @@ if (hours > 0) {
 } else {
     document.getElementById('periodCountdown').innerHTML = minutes + ":" + seconds;
     document.getElementById('periodCountdown').style.color='blue';
-    if (minutes < 2) {document.getElementById('periodCountdown').style.color='red';} // set text color to red if < 2 minutes
+    if (minutes < 5) {document.getElementById('periodCountdown').style.color='red';} // set text color to red if < 5 minutes
 }
 
 // break countdown
@@ -116,10 +116,10 @@ if (secondsUntilBreak < 10) {secondsUntilBreak = "0" + secondsUntilBreak;}
 if (hoursUntilBreak > 0) { // more than an hour until break
     if (minutesUntilBreak < 10) {minutesUntilBreak = "0" + minutesUntilBreak;}
     document.getElementById('breakCountdown').innerHTML = hoursUntilBreak + ":" + minutesUntilBreak + ":" + secondsUntilBreak;
-    document.getElementById('breakCountdown').style.color='yellow';
+    document.getElementById('breakCountdown').style.color='green';
 } else if (minutesUntilBreak > 32) { // more than one period until break
     document.getElementById('breakCountdown').innerHTML = minutesUntilBreak + ":" + secondsUntilBreak;
-    document.getElementById('breakCountdown').style.color='orange';
+    document.getElementById('breakCountdown').style.color='green';
 } else { // we are in the last period before break
     document.getElementById('breakCountdown').innerHTML = "";
 }
