@@ -30,9 +30,9 @@ document.getElementById('date').innerHTML = weekday+" "+year+"-"+displayMonth+"-
 document.getElementById('time').innerHTML = hour+":"+minute+" "+ampm;
 
 
-//if (dateNow.getDay() == 0 || dateNow.getDay() == 6) { // Sunday or Saturday
-//    document.body.style.backgroundColor='grey';
-//} else {
+if (dateNow.getDay() == 0 || dateNow.getDay() == 6) { // Sunday or Saturday
+    document.body.style.backgroundColor='#202020';
+} else {
 if (day < 8 && dateNow.getDay() == 3) { // first Wednesday of the month
     var zero = new Date(year, month, day, 8, 37, 0);
     var one = new Date(year, month, day, 9, 3, 0);
@@ -125,7 +125,7 @@ if (hoursUntilBreak > 0) { // more than an hour until break
 }
 
 if (hours == 5 && minutes == 30 && seconds == 30) {location.reload(true);} // reload each morning for an update
-//} // closing the Saturday Sunday check
+} // closing the Saturday Sunday check
 }, 1000); // updating setInterval every 1000 milliseconds
 </script>
 </body>
