@@ -79,6 +79,7 @@ if (difference < 0) {difference = nine - dateNow; period = "Period 9";}
 if (difference < 0) {difference = ten - dateNow; period = "Period 10";}
 
 document.getElementById('period').innerHTML = period;
+document.getElementById('period').style.color='blue';
 
 // period countdown
 var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -88,12 +89,12 @@ if (seconds < 10) {seconds = "0" + seconds;}
 if (hours > 0) {
     if (minutes < 10) {minutes = "0" + minutes;}
     document.getElementById('periodCountdown').innerHTML = hours+":"+minutes+":"+seconds;
+    document.getElementById('periodCountdown').style.color='blue';
 } else {
     document.getElementById('periodCountdown').innerHTML = minutes + ":" + seconds;
+    document.getElementById('periodCountdown').style.color='blue';
     if (minutes < 2) {document.getElementById('periodCountdown').style.color='red';} // set text color to red if < 2 minutes
 }
-
-if (hours == 5 && minutes == 30 && seconds == 30) {location.reload(true);} // reload each morning for an update
 
 // break countdown
 if (day < 8 && dateNow.getDay() == 3) { // first Wednesday of the month
@@ -115,18 +116,15 @@ if (secondsUntilBreak < 10) {secondsUntilBreak = "0" + secondsUntilBreak;}
 if (hoursUntilBreak > 0) { // more than an hour until break
     if (minutesUntilBreak < 10) {minutesUntilBreak = "0" + minutesUntilBreak;}
     document.getElementById('breakCountdown').innerHTML = hoursUntilBreak + ":" + minutesUntilBreak + ":" + secondsUntilBreak;
-} else { // less than an hour until break
+    document.getElementById('breakCountdown').style.color='yellow';
+} else if (minutesUntilBreak > 32) { // more than one period until break
     document.getElementById('breakCountdown').innerHTML = minutesUntilBreak + ":" + secondsUntilBreak;
-}
-/*
-} else if (minutesUntilBreak > 30) { // more than one period until break
-    document.getElementById('breakCountdown').innerHTML = minutesUntilBreak + ":" + secondsUntilBreak;
+    document.getElementById('breakCountdown').style.color='orange';
 } else { // we are in the last period before break
     document.getElementById('breakCountdown').innerHTML = "";
-}//*/
-//document.getElementById('countDownParagraph').innerHTML = "<div style='color:blue'>"+ period + "</div>" + countDownString + "<div style='color:yellow'>" + untilRecess + "</div>";
+}
 
-
+if (hours == 5 && minutes == 30 && seconds == 30) {location.reload(true);} // reload each morning for an update
 //} // closing the Saturday Sunday check
 }, 1000); // updating setInterval every 1000 milliseconds
 </script>
