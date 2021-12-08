@@ -5,7 +5,7 @@
 <base target='_top'>
 </head>
 <body>
-<div id='date' style="text-align: center; font-size: 700%;"></div>
+<div id='date' style="text-align: center; font-size: 600%;"></div>
 <div id='time' style="text-align: center; font-size: 700%;"></div>
 <div id='period' style="text-align: center; font-size: 700%;"></div>
 <div id='periodCountdown' style="text-align: center; font-size: 700%;"></div>
@@ -16,8 +16,17 @@ var x = setInterval(function() {
 var dateNow = new Date();
 var year = dateNow.getFullYear();
 var month = dateNow.getMonth();
-var displayMonth = month + 1;
+if (month < 10) {
+    var displayMonth = '0' + (month + 1); // since months are zero-indexed
+} else {
+    var displayMonth = month + 1;
+}
 var day = dateNow.getDate();
+if (day < 10) {
+    var displayDay = '0' + day;
+} else {
+    var displayDay = day;
+}
 var weekdayNumber = dateNow.getDay();
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 var weekday = weekdays[weekdayNumber];
@@ -26,7 +35,7 @@ if (hour > 12) {hour = hour - 12;}
 var minute = dateNow.getMinutes();
 if (minute < 10) {minute = "0" + minute;}
 var ampm = dateNow.getHours() >= 12 ? 'PM' : 'AM';
-document.getElementById('date').innerHTML = weekday+" "+year+"-"+displayMonth+"-"+day;  // since months are zero-indexed
+document.getElementById('date').innerHTML = weekday+" "+year+"-"+displayMonth+"-"+displayDay;
 document.getElementById('time').innerHTML = hour+":"+minute+" "+ampm;
 
 
