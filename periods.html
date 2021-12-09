@@ -104,6 +104,7 @@ if (hours > 0) {
     document.getElementById('periodCountdown').innerHTML = minutes + ":" + seconds;
     document.getElementById('periodCountdown').style.color='blue';
     if (minutes < 5) {document.getElementById('periodCountdown').style.color='red';} // set text color to red if < 5 minutes
+    if (minutes ==0 && seconds == 0) {document.getElementById('periodCountdown').style.color='white';} // hide it at the end of the day
 }
 
 // break countdown
