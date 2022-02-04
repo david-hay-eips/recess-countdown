@@ -73,6 +73,9 @@ if (day < 8 && dateNow.getDay() == 3) { // first Wednesday of the month
     if (difference < 0) {difference = nine - dateNow; period = "Period 9";}
     if (difference < 0) {difference = ten - dateNow; period = "Period 10";}
     if (difference < 0) {difference = ""; period = "";}
+    var untilBreak = three - dateNow;
+    if (untilBreak < 0) {untilBreak = seven - dateNow;}
+    if (untilBreak < 0) {untilBreak = ten - dateNow;}
 } else {
     var zero = new Date(year, month, day, 8, 37, 0);
     var one = new Date(year, month, day, 9, 9, 0);
@@ -106,9 +109,11 @@ if (day < 8 && dateNow.getDay() == 3) { // first Wednesday of the month
     if (difference < 0) {difference = nine - dateNow; period = "Period 9";}
     if (difference < 0) {difference = ten - dateNow; period = "Period 10";}
     if (difference < 0) {difference = ""; period = "";}
+    var untilBreak = three - dateNow;
+    if (untilBreak < 0) {untilBreak = six - dateNow;}
+    if (untilBreak < 0) {untilBreak = eight - dateNow;}
+    if (untilBreak < 0) {untilBreak = ten - dateNow;}
 }
-
-
 
 document.getElementById('period').innerHTML = period;
 document.getElementById('period').style.color='blue';
@@ -130,17 +135,6 @@ if (hours > 0) {
 }
 
 // break countdown
-if (day < 8 && dateNow.getDay() == 3) { // first Wednesday of the month
-    var untilBreak = three - dateNow;
-    if (untilBreak < 0) {untilBreak = seven - dateNow;}
-    if (untilBreak < 0) {untilBreak = ten - dateNow;}
-}
-else {
-    var untilBreak = three - dateNow;
-    if (untilBreak < 0) {untilBreak = six - dateNow;}
-    if (untilBreak < 0) {untilBreak = eight - dateNow;}
-    if (untilBreak < 0) {untilBreak = ten - dateNow;}
-}
 var hoursUntilBreak = Math.floor((untilBreak % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 var minutesUntilBreak = Math.floor((untilBreak % (1000 * 60 * 60)) / (1000 * 60));
 var secondsUntilBreak = Math.floor((untilBreak % (1000 * 60)) / 1000);
