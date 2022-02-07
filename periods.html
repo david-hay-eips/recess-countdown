@@ -148,7 +148,9 @@ if (hoursUntilBreak > 0) { // more than an hour until break
     document.getElementById('breakCountdown').innerHTML = minutesUntilBreak + ":" + secondsUntilBreak;
     document.getElementById('breakCountdown').style.color='green';
 } else { // we are in the last period before break
-    document.getElementById('breakCountdown').innerHTML = "";
+    //document.getElementById('breakCountdown').innerHTML = "";
+    document.getElementById('breakCountdown').innerHTML = minutesUntilBreak + ":" + secondsUntilBreak;
+    document.getElementById('breakCountdown').style.color='grey';
 }
 
 if (hours == 5 && minutes == 30 && seconds == 30) {location.reload(true);} // reload each morning for an update
