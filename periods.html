@@ -147,6 +147,8 @@ if (hoursUntilBreak > 0) { // more than an hour until break
 } else if (minutesUntilBreak > 32) { // more than one period until break
     document.getElementById('breakCountdown').innerHTML = minutesUntilBreak + ":" + secondsUntilBreak;
     document.getElementById('breakCountdown').style.color='green';
+} else if (hoursUntilBreak < 0) { // after school
+    document.getElementById('breakCountdown').innerHTML = ""; 
 } else { // we are in the last period before break
     //document.getElementById('breakCountdown').innerHTML = "";
     document.getElementById('breakCountdown').innerHTML = minutesUntilBreak + ":" + secondsUntilBreak;
