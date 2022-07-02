@@ -1,3 +1,3 @@
 # Recess Countdown
 
-This includes html files with JavaScript that displays the current time and counts down to recess.
+This repo has been moved to https://github.com/Westboro/recess-countdown
